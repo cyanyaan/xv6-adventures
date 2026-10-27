@@ -220,8 +220,7 @@ commit()
 //   modify bp->data[]
 //   log_write(bp)
 //   brelse(bp)
-void
-log_write(struct buf *b)
+void log_write(struct buf *b)
 {
   int i;
 
@@ -243,8 +242,7 @@ log_write(struct buf *b)
   release(&log.lock);
 }
 
-uint64
-sys_sync(void)
+uint64 sys_sync(void)
 {
   acquire(&log.lock);
   if (log.committing || log.outstanding > 0) {
